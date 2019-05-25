@@ -1,0 +1,160 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="Proj1" target="8" version="2">
+  <project Name="Proj1">
+    <configuration
+      CMSIS_CORE="Yes"
+      Family="STM32"
+      Name="Common"
+      Placement="Flash"
+      Target="STM32L073RZ"
+      arm_architecture="v6M"
+      arm_core_type="Cortex-M0+"
+      arm_fpu_type="None"
+      arm_gcc_target="arm-unknown-eabi"
+      arm_linker_heap_size="1024"
+      arm_linker_jtag_pad_pre_dr="1"
+      arm_linker_jtag_pad_pre_ir="5"
+      arm_linker_process_stack_size="0"
+      arm_linker_stack_size="1024"
+      arm_simulator_memory_simulation_filename="$(TargetsDir)/STM32/STM32SimulatorMemory$(HostDLL)"
+      arm_simulator_memory_simulation_parameter="STM32L073RZ;0x30000;0x5000"
+      arm_target_connect_with_reset="No"
+      arm_target_debug_interface_type="ADIv5"
+      arm_target_interface_type="Default"
+      arm_target_loader_applicable_loaders="Flash"
+      arm_target_loader_default_loader="Flash"
+      arm_target_restrict_memory_accesses="Yes"
+      c_preprocessor_definitions="USE_HAL_DRIVER;STM32L073xx;STARTUP_FROM_RESET"
+      c_preprocessor_undefinitions=""
+      c_user_include_directories=";./../Inc;./../Drivers/STM32L0xx_HAL_Driver/Inc;./../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy;./../Drivers/CMSIS/Device/ST/STM32L0xx/Include;./../Drivers/CMSIS/Include"
+      debug_register_definition_file="$(TargetsDir)/STM32/STM32L0x3_Peripherals.xml"
+      gcc_optimization_level="Level 3"
+      linker_memory_map_file="$(TargetsDir)/STM32/STM32L073RZ_MemoryMap.xml"
+      linker_printf_fmt_level="int"
+      linker_printf_fp_enabled="No"
+      linker_scanf_fmt_level="int"
+      linker_scanf_fp_enabled="No"
+      linker_section_placement_file="$(StudioDir)/targets/Cortex_M/flash_placement.xml"
+      macros="DeviceVectorsFile=STM32L073xx.vec"
+      project_directory=""
+      project_type="Executable"
+      property_groups_file_path="$(TargetsDir)/STM32/propertyGroups.xml"
+      target_get_partname_script="GetPartName()"
+      target_match_partname_script="MatchPartName(&quot;$(Target)&quot;)"
+      target_script_file="$(TargetsDir)/STM32/STM32_Target.js"
+      target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <configuration
+      Name="Flash"
+      arm_target_flash_loader_file_path="$(LOADER:$(TargetsDir)/STM32/Release/STM32L0_Loader_rpc.elf)"
+      arm_target_loader_can_erase_all="No"
+      arm_target_loader_can_lock_all="No"
+      arm_target_loader_can_lock_range="No"
+      arm_target_loader_can_unlock_all="No"
+      arm_target_loader_can_unlock_range="No"
+      target_reset_script="FLASHReset()" />
+    <configuration Name="RAM" target_reset_script="Reset()" />
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+    </folder>
+    <folder Name="System Files">
+      <file file_name="$(StudioDir)/source/thumb_crt0.s" />
+      <file file_name="$(TargetsDir)/STM32/STM32_Startup.s">
+        <configuration
+          Name="Common"
+          c_preprocessor_definitions="STARTUP_FROM_RESET" />
+      </file>
+    </folder>
+    <folder Name="Application">
+      <folder Name="EWARM">
+        <file file_name="./startup_stm32l073xx.s">
+          <configuration Name="Common" build_exclude_from_build="Yes" />
+        </file>
+      </folder>
+      <folder Name="User">
+        <file file_name="./../Src/main.c" />
+        <file file_name="./../Src/gpio.c" />
+        <file file_name="./../Src/adc.c" />
+        <file file_name="./../Src/dma.c" />
+        <file file_name="./../Src/i2c.c" />
+        <file file_name="./../Src/iwdg.c" />
+        <file file_name="./../Src/usart.c" />
+        <file file_name="./../Src/tim.c" />
+        <file file_name="./../Src/stm32l0xx_it.c" />
+        <file file_name="./../Src/stm32l0xx_hal_msp.c" />
+        <file file_name="../Src/adafruit5x7.h" />
+        <file file_name="../Src/clicker.c" />
+        <file file_name="../Src/clicker.h" />
+        <file file_name="../Src/ds3231.c" />
+        <file file_name="../Src/ds3231.h" />
+        <file file_name="../Src/font.c" />
+        <file file_name="../Src/font.h" />
+        <file file_name="../Src/graphic_menu.c" />
+        <file file_name="../Src/graphic_menu.h" />
+        <file file_name="../Src/graphicDisplay.c" />
+        <file file_name="../Src/graphicDisplay.h" />
+        <file file_name="../Src/memoryI2C.c" />
+        <file file_name="../Src/memoryI2C.h" />
+        <file file_name="../Src/menudef.c" />
+        <file file_name="../Src/ssd1306.c" />
+        <file file_name="../Src/ssd1306.h" />
+        <file file_name="../Src/thermostat.c" />
+        <file file_name="../Src/thermostat.h" />
+        <configuration Name="THUMB Release" build_exclude_from_build="No" />
+        <file file_name="../Src/stateMachine.c" />
+        <file file_name="../Src/stateMachine.h" />
+      </folder>
+    </folder>
+    <folder Name="Drivers">
+      <folder Name="STM32L0xx_HAL_Driver">
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_adc.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_adc_ex.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_i2c.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_i2c_ex.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_iwdg.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart_ex.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_tim.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_tim_ex.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc_ex.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_flash_ramfunc.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_flash.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_flash_ex.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_gpio.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_dma.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_pwr.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_pwr_ex.c" />
+        <file file_name="./../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_cortex.c" />
+      </folder>
+      <folder Name="CMSIS">
+        <file file_name="./..//Src/system_stm32l0xx.c" />
+      </folder>
+    </folder>
+  </project>
+  <configuration Name="THUMB Debug" inherited_configurations="THUMB;Debug" />
+  <configuration
+    Name="THUMB"
+    Platform="ARM"
+    arm_instruction_set="Thumb"
+    arm_library_instruction_set="Thumb"
+    c_preprocessor_definitions="__THUMB"
+    hidden="Yes" />
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="None"
+    hidden="Yes" />
+  <configuration
+    Name="THUMB Release"
+    inherited_configurations="THUMB;Release" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="None"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 1"
+    hidden="Yes" />
+</solution>
